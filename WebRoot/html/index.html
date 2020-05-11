@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>京东首页</title>
+
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+
+		<style type="text/css">
+			body {
+				font: 12px/150% Arial, Verdana, "宋体";
+				color: #666;
+				background: #fff;
+			}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.leftFloat {
+				float: left;
+			}
+			
+			.rightFloat {
+				float: right;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #666;
+			}
+			
+			a:hover,
+			a:active {
+				color: #e4393c;
+				text-decoration: none;
+			}
+			
+			#freeRegist {
+				height: 30px;
+				line-height: 30px;
+				color: #C81623;
+				margin-left: 15px;
+			}
+			
+			#pleaseLogin {
+				height: 30px;
+				background-color: #F1F1F1;
+			}
+			
+			#pleaseLoginCenter {
+				width: 1210px;
+				height: 30px;
+				margin: 0px auto;
+				line-height: 30px;
+			}
+			
+			#middle {
+				height: 768px;
+			}
+			/*网站logo/搜索框/购物车/水平导航*/
+			
+			#middleLogoAndHorizontalNav {
+				height: 144px;
+			}
+			
+			#logo {
+				width: 1210px;
+				height: 98px;
+				margin: 0px auto;
+			}
+			
+			#horizontalNav {
+				height: 44px;
+				border-bottom: 2px solid #B1191A;
+			}
+			
+			#horizontalNavCenter {
+				width: 1210px;
+				height: 44px;
+				margin: 0px auto;
+			}
+			
+			#main {}
+			/*包括两部分
+			 * 1.导航、Flash、京东快报
+			 * 2.今日推荐/商品四个展示*/
+			
+			#mainCenter {
+				width: 1210px;
+				height: 624px;
+				margin: 0px auto;
+			}
+			/*导航/Flash广告/京东快报*/
+			
+			#middleNavFlashQuickMessage {
+				width: 1210px;
+				height: 474px;
+			}
+			/*总宽度210 总高度466px*/
+			
+			#menu {
+				width: 188px;
+				height: 440px;
+				padding: 13px 10px 12px;
+				border: 1px solid #C81623;
+				float: left;
+				border-top: none;
+			}
+			/*京东垂直菜单开始*/
+			
+			#menu h3 {
+				border-bottom: 1px solid #EEEEEE;
+				height: 24px;
+				line-height: 24px;
+				width: 187px;
+			}
+			
+			#menu ul {
+				float: left;
+				padding: 0px 2px 8px;
+			}
+			
+			#menu li {
+				color: #AEADAE;
+				float: left;
+				height: 24px;
+				line-height: 24px;
+				width: 92px;
+				overflow: hidden;
+				position: relative
+			}
+			
+			#menu li a {
+				color: #444444;
+			}
+			
+			#menu li a:hover {
+				color: #e4393c;
+			}
+			/*#menu li a.promoted {
+				color:#F9044E;
+			}*/
+			/*	#menu li .hot {
+				background: url(img/hot.gif) no-repeat scroll 0 0 transparent;
+				height: 16px;
+				position: absolute;
+				top:0px;
+				width:21px;
+			}*/
+			/*京东垂直菜单结束*/
+			
+			#allCategorys {
+				width: 998px;
+				height: 520px;
+				border-left: 1px solid #B1191A;
+				border-right: 1px solid #B1191A;
+				border-bottom: 1px solid #B1191A;
+				background-color: #F7F7F7;
+				float: left;
+				display: none;
+			}
+			
+			#flashAndQuickMessage {
+				width: 990px;
+				height: 454px;
+				padding: 12px 0 8px 10px;
+				float: left;
+			}
+			
+			#flash {
+				width: 730px;
+				height: 454px;
+				background-color: red;
+				float: left;
+			}
+			
+			#jdQuickMessage {
+				width: 250px;
+				height: 454px;
+				float: right;
+			}
+			
+			#jdQuickMessageTop {
+				width: 248px;
+				height: 165px;
+				border: 1px solid #E8E8E7;
+				border-bottom: none;
+			}
+			
+			#jdQuickMessageHead {
+				height: 32px;
+				line-height: 32px;
+				padding: 0px 15px;
+				border-bottom: 1px dotted #E8E8E7;
+			}
+			
+			#jdQuickMessageHead>h2 {
+				font-size: 16px;
+				font-family: "microsoft yahei";
+				font-weight: 400;
+				float: left;
+			}
+			
+			#jdQuickMessageHead>div {
+				float: right;
+				font-family: consolas;
+			}
+			
+			#jdQuickMessageDetail {
+				height: 120px;
+				padding: 8px 0px 0px 15px;
+				padding-top: 5px;
+				overflow: hidden;
+			}
+			
+			#jdQuickMessageDetail>ul>li {
+				height: 24px;
+				line-height: 24px;
+			}
+			
+			#jdQuickMessageDetail>ul>li span {
+				font-weight: 700;
+				margin-right: 5px;
+			}
+			
+			#jdQuickMessageMiddle {
+				width: 250px;
+				height: 213px;
+			}
+			
+			#jdQuickMessageBottom {
+				width: 250px;
+				height: 75px;
+			}
+			/*今日推荐/商品四格展示*/
+			
+			#middleRecommendAnd4Display {
+				width: 1210px;
+				height: 150px;
+			}
+			/*今日推荐*/
+			
+			#todayRecommond {
+				width: 210px;
+				height: 150px;
+				background-color: greenyellow;
+				float: left;
+			}
+			/*商品四格展示*/
+			
+			#fourDisplay {
+				width: 1000px;
+				height: 150px;
+				float: right;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#content_list {
+				width: 4000px;
+				height: 150px;
+				position: relative;
+			}
+			
+			#content_list li {
+				width: 249px;
+				height: 162px;
+				margin-right: 1px;
+				float: left;
+			}
+			
+			#content_list img {
+				width: 249px;
+				height: 162px;
+			}
+			
+			#page {
+				width: 1000px;
+				height: 62px;
+				position: absolute;
+				top: 50px;
+				z-index: 1;
+			}
+			
+			#page span {
+				display: block;
+				width: 28px;
+				height: 62px;
+				line-height: 62px;
+				background: rgba(0, 0, 0, .2);
+				color: #fff;
+				text-align: center;
+				font-size: 22px;
+				font-weight: 400;
+				font-family: simsun;
+			}
+			
+			span.prev {
+				float: left;
+			}
+			
+			span.next {
+				float: right;
+			}
+			
+			#copyright {
+				height: 30px;
+				margin-top: 8px;
+				
+			}
+			
+			#copyrightCenter {
+				width: 1210px;
+				height: 30px;
+				margin: 0px auto;
+				
+			}
+			/*送至北京开始*/
+			
+			#panel {
+				width: 94px;
+				height: 30px;
+				position: relative;
+				float: left;
+			}
+			
+			div.headFather {
+				width: 94px;
+				height: 30px;
+				position: absolute;
+				z-index: 2;
+			}
+			
+			div.head {
+				width: 72px;
+				height: 30px;
+				padding: 0px 10px;
+				border-left: 1px solid #F1F1F1;
+				border-right: 1px solid #F1F1F1;
+				cursor: pointer;
+				background-color: #F1F1F1;
+			}
+			/*实际总宽度314 高度248*/
+			
+			.content {
+				width: 312px;
+				height: 226px;
+				padding: 10px 0px;
+				border: 1px solid #DDDDDD;
+				display: none;
+				background-color: #fff;
+				position: absolute;
+				top: 30px;
+				z-index: 1;
+			}
+			
+			ul.toProvince {
+				padding-left: 10px;
+				padding-top: 2px;
+				float: left;
+			}
+			/*每个li是58*/
+			
+			ul.toProvince>li {
+				width: 60px;
+				height: 28px;
+				display: block;
+				float: left;
+			}
+			
+			ul.toProvince>li>a {
+				height: 16px;
+				padding: 4px 8px;
+				line-height: 16px;
+				text-decoration: none;
+				color: #666;
+			}
+			
+			ul.toProvince>li>a.hover {
+				background-color: #F4F4F4;
+				color: #C81623;
+			}
+			
+			ul.toProvince>li>a.active {
+				background-color: #C81623;
+				color: #fff;
+			}
+			/*送至北京结束*/
+			/*您好,请登录*/
+			
+			#loginLabel {
+				width: 900px;
+				height: 30px;
+				float: right;
+				position: relative;
+			}
+			
+			#loginRight {
+				width: 150px;
+				height: 30px;
+				position: absolute;
+				right: 0px;
+			}
+			/*Logo、搜索框、购物车*/
+			
+			#logoImageDiv {
+				width: 270px;
+				height: 79px;
+				padding-top: 19px;
+				float: left;
+			}
+			/*导航开始*/
+			
+			#searchDiv {
+				width: 734px;
+				height: 98px;
+				float: left;
+			}
+			
+			#searchDiv2 {
+				width: 544px;
+				height: 36px;
+				margin-top: 25px;
+				margin-left: 92px;
+			}
+			
+			input.searchInput {
+				float: left;
+				width: 446px;
+				height: 24px;
+				line-height: 24px;
+				color: #666;
+				padding: 4px;
+				margin-bottom: 4px;
+				border-width: 2px 0 2px 2px;
+				border-color: #B61D1D;
+				border-style: solid;
+				outline: 0;
+				font-size: 14px;
+				font-family: "microsoft yahei";
+			}
+			
+			button.searchButton {
+				float: left;
+				width: 82px;
+				height: 36px;
+				background: #B61D1D;
+				border: none;
+				line-height: 1;
+				color: #fff;
+				font-family: "Microsoft YaHei";
+				font-size: 16px;
+				cursor: pointer;
+			}
+			/*搜索下面的div 放进口1元 小龙虾等超链接 开始*/
+			
+			#searchBelow {
+				width: 544px;
+				margin-left: 92px;
+				float: left;
+			}
+			
+			#searchBelow a {
+				float: left;
+				white-space: nowrap;
+				margin-right: 10px;
+			}
+			
+			.style-red {
+				color: #C81623;
+			}
+			/*搜索下面的div 放进口1元 小龙虾等超链接 结束*/
+			/*导航结束*/
+			/*购物车开始*/
+			
+			#shoppingDiv {
+				width: 206px;
+				height: 98px;
+				float: left;
+			}
+			
+			#shoppingCar {
+				width: 140px;
+				height: 34px;
+				line-height: 34px;
+				border: 1px solid #DFDFDF;
+				display: block;
+				background-color: #F9F9F9;
+				margin-top: 25px;
+				position: relative;
+			}
+			
+			label.shoppingCarLabel {
+				width: 18px;
+				height: 16px;
+				background: url(../img/shoppingCar.png) no-repeat 0 -58px;
+				display: inline-block;
+				overflow: hidden;
+				position: absolute;
+				top: 9px;
+				left: 14px;
+			}
+			
+			#shoppingCarLeftMargin {
+				margin-left: 40px;
+			}
+			/*购物车结束*/
+			/*水平导航 开始*/
+			/*1.京东垂直导航头*/
+			
+			#varticalNavHead {
+				width: 210px;
+				height: 44px;
+				float: left;
+			}
+			
+			#varticalNavHead>a {
+				display: block;
+				width: 190px;
+				height: 44px;
+				padding: 0 10px;
+				background: #B1191A;
+				font: 400 15px/44px "microsoft yahei";
+				color: #fff;
+				text-decoration: none;
+			}
+			
+			#horizontalNavMenu {
+				width: 1000px;
+				height: 44px;
+				float: right;
+			}
+			
+			#horizontalNavMenu li {
+				float: left;
+			}
+			
+			#horizontalNavMenu>ul>li>a:link,
+			#horizontalNavMenu>ul>li>a:visited {
+				display: block;
+				height: 44px;
+				padding: 0 20px;
+				color: #333;
+				font: 400 16px/44px "microsoft yahei";
+				text-decoration: none;
+				text-align: center;
+				color: #333;
+			}
+			
+			#horizontalNavMenu>ul>li>a:hover,
+			#horizontalNavMenu>ul>li>a:active {
+				color: #e4393c;
+			}
+			/*水平导航 结束*/
+			/*版权信息*/
+			
+			div.copyrightFirstLine {
+				width: 836px;
+				margin: 0px auto;
+				text-align: center;
+				position: relative;
+				
+			}
+			
+			label.copyright-label {
+				position: relative;
+				top: 15px;
+				color: #666;
+			}
+			
+			.copyrightFirstLine ul a {
+				margin-right: 3px;
+			}
+			
+			.horizontal-ul li {
+				float: left;
+			}
+			
+			.copyrightFirstLine .horizontal-ul li span {
+				color: #666;
+			}
+		</style>
+		<script src="../js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../css/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*送至山东开始*/
+			$(function() {
+
+			
+
+				//需求: 鼠标悬浮在 标题上时   显示标题下面的div
+
+				$("#panel").hover(function() {
+
+					//让层显示
+					$(this).find("div.content").show();
+
+					//div外面的div加上左右边框
+
+					var $headFatherDiv = $(this).find("div.headFather");
+					$headFatherDiv.css("border-left", "1px solid #DDDDDD");
+					$headFatherDiv.css("border-right", "1px solid #DDDDDD");
+
+					//head div颜色变白 设置下补白为1px 这样正好下面多出来一点 遮住content这个div
+					$headFatherDiv.find("div.head").css("backgroundColor", "#fff");
+					$headFatherDiv.find("div.head").css("padding-bottom", "1px");
+
+				}, function() {
+
+					$(this).find("div.content").hide();
+
+					//div外面的div加上左右边框
+					var $headFatherDiv = $(this).find("div.headFather");
+					$headFatherDiv.css("border-left", "1px solid #F1F1F1");
+					$headFatherDiv.css("border-right", "1px solid #F1F1F1");
+
+					$headFatherDiv.find("div.head").css("backgroundColor", "#F1F1F1");
+					$headFatherDiv.find("div.head").css("padding-bottom", "0px");
+
+				});
+
+				//动态产生ul
+				var proviceArr = ['北京', '上海', '天津', '重庆', '河北', '山西', '河南', '辽宁', '吉林', '黑龙江', '内蒙古', '江苏', '山东', '安徽', '浙江', '福建', '湖北', '湖南', '广东', '广西', '江西', '四川', '海南', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '台湾', '香港',
+					'澳门', '钓鱼岛', '海外'
+				];
+
+				var $provinceUL = $(".toProvince");
+
+				for(var i = 0; i < proviceArr.length; i++) {
+
+					$provinceUL.append("<li><a href='#'>" + proviceArr[i] + "</a></li>");
+
+				}
+
+				//鼠标悬浮在a上,背景变灰 #F4F4FC   文字变红 #C81623
+				$(".toProvince a").hover(function() {
+
+					$(this).addClass("hover");
+				}, function() {
+
+					$(this).removeClass("hover");
+				});
+
+				//给a绑定事件
+
+				$(".toProvince a").click(function() {
+
+					//1.被点击的a背景变红、字变白
+					/*$(this).css({
+						"backgroundColor": "#C81623",
+						"color": "#fff"
+					});*/
+
+					$(this).addClass("active");
+					//2.其他的兄弟节点a 背景变白
+					$(this).parent().siblings().find("a").removeClass("active");
+					//3.送至 后面的文字改变
+
+					var $sendToSpan = $("#sendTo");
+					$sendToSpan.text($(this).text());
+					
+					//把所选省份保存到cookie中
+					
+				
+					 $.cookie("sendToProvince", $(this).text() , { path: '/', expires: 10 });
+				});
+				/*送至山东结束*/
+
+				/*给搜索框绑定onfocus事件  获得焦点清空 移除焦点恢复*/
+				var $searchInput = $("#search");
+
+				$searchInput.focus(function() {
+
+					//清空
+					if($searchInput.val() == "iphone6") {
+						$searchInput.val("");
+					}
+
+				}).blur(function() {
+					//恢复默认文字
+					if($searchInput.val() == "") {
+						$searchInput.val("iphone6");
+					}
+				});
+
+				//给四格广告的外面的div绑定onmouseover和onmouseout事件
+				//鼠标放上去 翻页div显示 鼠标移除翻译div隐藏
+				//默认翻页div是隐藏的
+				$("#page").hide();
+
+				$("#fourDisplay").hover(function() {
+					$("#page").show();
+				}, function() {
+					$("#page").hide();
+				});
+
+				/*给上一页和下一页这两个span绑定事件 开始*/
+				var page = 1;
+				var i = 4; //每版放4个图片
+				//向后 按钮
+				$("span.next").click(function() { //绑定click事件
+
+					var $fourDisplay = $("#fourDisplay"); //寻找到“视频内容展示区域”外围的DIV元素
+					var $content_list = $("#content_list"); //寻找到“视频内容展示区域”
+
+					var v_width = $fourDisplay.width();
+					var len = $content_list.find("li").length;
+
+					var page_count = Math.ceil(len / i); //只要不是整数，就往大的方向取最小的整数
+
+					if(!$content_list.is(":animated")) { //判断“视频内容展示区域”是否正在处于动画
+						if(page == page_count) { //已经到最后一个版面了,如果再向后，必须跳转到第一个版面。
+
+							$content_list.animate({
+								left: '0px'
+							}, "slow"); //通过改变left值，跳转到第一个版面
+							page = 1;
+
+						} else {
+							$content_list.animate({
+								left: '-=' + v_width
+							}, "slow"); //通过改变left值，达到每次换一个版面
+							page++;
+						}
+					}
+
+				});
+				//往前 按钮
+				$("span.prev").click(function() {
+
+					var $fourDisplay = $("#fourDisplay"); //寻找到“视频内容展示区域”外围的DIV元素
+					var $content_list = $("#content_list"); //寻找到“视频内容展示区域”
+
+					var v_width = $fourDisplay.width();
+					var len = $content_list.find("li").length;
+					var page_count = Math.ceil(len / i); //只要不是整数，就往大的方向取最小的整数
+					if(!$content_list.is(":animated")) { //判断“视频内容展示区域”是否正在处于动画
+						if(page == 1) { //已经到第一个版面了,如果再向前，必须跳转到最后一个版面。
+							$content_list.animate({
+								left: '-=' + v_width * (page_count - 1)
+							}, "slow");
+							page = page_count;
+						} else {
+							$content_list.animate({
+								left: '+=' + v_width
+							}, "slow");
+							page--;
+						}
+					}
+
+				});
+
+				/*给上一页和下一页这两个span绑定事件 结束*/
+				
+				
+				//从cookie中读出 省份信息,显示到span中
+				if($.cookie("sendToProvince")!=null){
+					var provinceTxt = $.cookie("sendToProvince");
+					
+					//让span显示 从cookie中取出来的省
+					var $sendToSpan = $("#sendTo");
+					$sendToSpan.text(provinceTxt);
+					
+					//让文本包含 "山东" 的 a 选中
+					
+					var str = ".toProvince a:contains('" + provinceTxt +"')";
+					
+					var $selectProvince = $(str);
+					$selectProvince.addClass("active");
+					
+				}
+				
+			});
+			
+			
+			
+		</script>
+	</head>
+	</head>
+
+	<body>
+		<!--登录/注册-->
+		<div id="pleaseLogin">
+			<div id="pleaseLoginCenter">
+
+				<!--送至:北京 开始-->
+				<div id="panel">
+					<div class="headFather">
+						<div class="head">送至:<span id="sendTo">北京</span></div>
+					</div>
+					<div class="content">
+						<ul class="toProvince"></ul>
+					</div>
+				</div>
+
+				<!--送至:北京 结束-->
+				<div id="loginLabel">
+					<div id="loginRight">
+						<a href="#">你好,请登录</a>
+						<a href="#" id="freeRegist">免费注册</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--中间-->
+		<div id="middle">
+
+			<!--放logo和水平导航-->
+			<div id="middleLogoAndHorizontalNav">
+				<div id="logo">
+					<div id="logoImageDiv">
+						<img src="../img/logo.png" />
+					</div>
+					<div id="searchDiv">
+						<div id="searchDiv2">
+							<form action="#" method="post">
+								<input type="text" class="searchInput" id="search" name="search" value="iphone6" />
+								<button class="searchButton">搜索</button>
+							</form>
+						</div>
+
+						<div id="searchBelow">
+
+							<a class="style-red" href="#">进口1元</a>
+							<a href="#">小龙虾</a>
+							<a href="#">蓝莓9.9</a>
+							<a href="#">机票减500</a>
+							<a href="#">满49减15</a>
+							<a href="#">笔袋</a>
+							<a href="#">大闸蟹礼券</a>
+							<a href="#">0元试用</a>
+							<a href="#">连衣裙棉麻</a>
+
+						</div>
+					</div>
+					<div id="shoppingDiv">
+						<div id="shoppingCar">
+							<span id="shoppingCarLeftMargin">
+								<label class="shoppingCarLabel"></label>
+								<a href="#">我的购物车</a>
+							</span>
+						</div>
+
+					</div>
+				</div>
+				<div id="horizontalNav">
+					<div id="horizontalNavCenter">
+						<div id="varticalNavHead">
+							<a href="#">全部商品分类</a>
+						</div>
+						<!--水平导航菜单-->
+						<div id="horizontalNavMenu">
+
+							<ul>
+								<li>
+									<a href="#">服装城</a>
+								</li>
+								<li>
+									<a href="#">美妆馆</a>
+								</li>
+								<li>
+									<a href="#">京东超市</a>
+								</li>
+								<li>
+									<a href="#">生鲜</a>
+								</li>
+								<li>
+									<a href="#">全球购</a>
+								</li>
+								<li>
+									<a href="#">闪购</a>
+								</li>
+								<li>
+									<a href="#">团购</a>
+								</li>
+								<li>
+									<a href="#">拍卖</a>
+								</li>
+								<li>
+									<a href="#">金融</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--放导航/Flash广告/京东快报-->
+			<div id="main">
+				<div id="mainCenter">
+
+					<div id="middleNavFlashQuickMessage">
+						<div id="menu">
+							<h3>推荐品牌</h3>
+							<ul>
+								<li>
+									<a href="#">耐克</a>
+								</li>
+								<li>
+									<a href="#" class="promoted">阿迪达斯</a>
+								</li>
+								<li>
+									<a href="#">达芙妮</a>
+								</li>
+								<li>
+									<a href="#">李宁</a>
+								</li>
+								<li>
+									<a href="#">安踏</a>
+								</li>
+								<li>
+									<a href="#">奥康</a>
+								</li>
+								<li>
+									<a href="#" class="promoted">骆驼</a>
+								</li>
+								<li>
+									<a href="#">特步</a>
+								</li>
+							</ul>
+							<br class="clear" />
+							<h3>推荐品牌</h3>
+							<ul>
+								<li>
+									<a href="#">耐克</a>
+								</li>
+								<li>
+									<a href="#">阿迪达斯</a>
+								</li>
+								<li>
+									<a href="#">达芙妮</a>
+								</li>
+								<li>
+									<a href="#">李宁</a>
+								</li>
+								<li>
+									<a href="#">安踏</a>
+								</li>
+								<li>
+									<a href="#">奥康</a>
+								</li>
+								<li>
+									<a href="#">骆驼</a>
+								</li>
+								<li>
+									<a href="#">特步</a>
+								</li>
+							</ul>
+							<br class="clear" />
+							<h3>推荐品牌</h3>
+							<ul>
+								<li>
+									<a href="#">耐克</a>
+								</li>
+								<li>
+									<a href="#">阿迪达斯</a>
+								</li>
+								<li>
+									<a href="#">达芙妮</a>
+								</li>
+								<li>
+									<a href="#">李宁</a>
+								</li>
+								<li>
+									<a href="#">骆驼</a>
+								</li>
+								<li>
+									<a href="#">特步</a>
+								</li>
+							</ul>
+							<br class="clear" />
+							<h3>推荐品牌</h3>
+							<ul>
+								<li>
+									<a href="#">耐克</a>
+								</li>
+								<li>
+									<a href="#">阿迪达斯</a>
+								</li>
+								<li>
+									<a href="#">达芙妮</a>
+								</li>
+								<li>
+									<a href="#">李宁</a>
+								</li>
+
+							</ul>
+							<br class="clear" />
+						</div>
+
+						<div id="flashAndQuickMessage">
+
+							<!--flash广告开始-->
+							<div id="flash">
+								<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width:730px;">
+									<!--标识符:告诉我们页码-->
+									<ol class="carousel-indicators">
+										<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+										<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+										<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+									</ol>
+
+									<!-- 幻灯片内容 -->
+									<div class="carousel-inner" role="listbox">
+										<div class="item active">
+											<img src="../img/1.jpg">
+
+										</div>
+
+										<div class="item">
+											<img src="../img/2.jpg">
+
+										</div>
+
+										<div class="item">
+											<img src="../img/3.jpg">
+
+										</div>
+									</div>
+
+									<!-- 控制器: 负责上一页/下一页 -->
+									<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+										<span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+										<span class="sr-only">Next</span>
+									</a>
+
+								</div>
+
+							</div>
+							<!--flash广告结束-->
+							<div id="jdQuickMessage">
+								<div id="jdQuickMessageTop">
+									<div id="jdQuickMessageHead">
+										<h2>京东快报</h2>
+										<div>
+											<a href="#">更多 ></a>
+										</div>
+									</div>
+
+									<div>
+										<div id="jdQuickMessageDetail">
+											<ul>
+
+												<li>
+													<a target="_blank" href="//sale.jd.com/act/PGipJ8g7UE.html"><span>[特惠]</span>0元拿399路由器！</a>
+												</li>
+												<li>
+													<a target="_blank" href="//www.jd.com/news.aspx?id=29664"><span>[公告]</span>京东美食地图·地方生鲜馆上线</a>
+												</li>
+												<li>
+													<a target="_blank" href="//e.cn.miaozhen.com/r/k=2023800&amp;p=717JN&amp;dx=0&amp;rt=2&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;o=http://sale.jd.com/act/CzjdDpnaF7Nst.html"><span>[特惠]</span>夏日清凉节 油腻ByeBye</a>
+												</li>
+												<li>
+													<a target="_blank" href="//www.jd.com/news.aspx?id=29663"><span>[公告]</span>New Look京东旗舰店盛大开业</a>
+												</li>
+												<li>
+													<a target="_blank" href="//sale.jd.com/act/Y3Wo5jzTLmAabQOr.html"><span>[特惠]</span>空调7折秒·小电买一送一</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="jdQuickMessageMiddle">
+									<img src="../img/jdQuickMessageMiddle.png" />
+								</div>
+								<div id="jdQuickMessageBottom">
+									<img src="../img/quickMessageBottom.jpg" />
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div id="middleRecommendAnd4Display">
+						<div id="todayRecommond">
+							<img src="../img/todayReCommand.png" />
+						</div>
+
+						<div id="fourDisplay">
+
+							<div id="content_list">
+								<ul>
+
+									<!--第1组-->
+									<div id="one">
+										<li>
+											<a href="#"><img src="../img/fourDisplay/11.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/12.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/13.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/14.jpg" /></a>
+										</li>
+									</div>
+									<!--第2组-->
+									<div id="two">
+										<li>
+											<a href="#"><img src="../img/fourDisplay/21.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/22.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/23.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/24.jpg" /></a>
+										</li>
+									</div>
+									<!--第3组-->
+									<div id="three">
+										<li>
+											<a href="#"><img src="../img/fourDisplay/31.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/32.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/33.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/34.jpg" /></a>
+										</li>
+									</div>
+
+									<!--第4组-->
+									<div id="four">
+										<li>
+											<a href="#"><img src="../img/fourDisplay/41.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/42.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/43.jpg" /></a>
+										</li>
+										<li>
+											<a href="#"><img src="../img/fourDisplay/44.jpg" /></a>
+										</li>
+									</div>
+
+								</ul>
+							</div>
+
+							<div id="page">
+								<span class="prev"> < </span>
+								<span class="next"> > </span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			
+
+	</body>
+
+</html>

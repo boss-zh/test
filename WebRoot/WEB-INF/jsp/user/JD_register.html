@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>京东注册</title>
+		<script src="js/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.pageConfig = {
+				compatible: true
+			};
+		</script>
+		<script type="text/javascript">
+			//		protocol        id 
+
+			$(document).ready(function() {
+
+				$('#protocol').on('click', function() {
+
+					//***************************************************************************正确的 原来的
+					//iframe层
+					layer.open({
+						type: 2,
+						title: '京东用户注册协议',
+						shadeClose: true,
+						shade: 0.8,
+						//area: ['380px', '75%'],
+						//content: '../JSHtml/京东登录小界面.html'
+						area: ['780px', '75%'],
+						content: '京东协议.html' 
+					});
+					//***************************************************************************正确的 原来的
+				});
+
+				$('#aid2').on('click',function() {
+					
+					$(".orEmail").hide();        //	addClass("divdisplay");	
+					$(".item-email-wrap").show();  //addClass("divdisplayshow");
+				});
+				
+				
+				//手机
+				$('#aid1').on('click',function() {
+					
+					$(".orEmail").show();	//addClass("divdisplayshow");	
+					$(".item-email-wrap").hide();//addClass("divdisplay");
+				});
+
+			});
+
+			var formaccountInput;
+			var formemailInput;
+			var formpwdInput;
+			var formequalTopwdInput;
+			var formphoneInput;
+
+			var pwd; //第一次输入密码
+			var equalpwd; //第二次输入密码
+			window.onload = function() {
+
+					//用户名
+					formaccountInput = document.getElementById("form-account");
+					formaccountInput.onfocus = Tipformaccount;
+					formaccountInput.onblur = Checkformaccount;
+					formaccountInput.onkeyup = Checkformaccount;
+
+					//邮箱
+					formemailInput = document.getElementById("form-email");
+					formemailInput.onfocus = Tipemail;
+					formemailInput.onblur = Checkemail;
+
+					//密码
+					formpwdInput = document.getElementById("form-pwd");
+					formpwdInput.onfocus = Tipformpwd;
+					formpwdInput.onblur = Checkformpwd;
+
+					//再次输入密码
+					formequalTopwdInput = document.getElementById("form-equalTopwd");
+					formequalTopwdInput.onfocus = TipformequalTopwd;
+					formequalTopwdInput.onblur = CheckformequalTopwd;
+
+					//手机号
+					formphoneInput = document.getElementById("form-phone");
+					formphoneInput.onfocus = Tipformphone;
+					formphoneInput.onblur = Checkformphone;
+
+				}
+				//btn-register
+
+			//邮箱
+			function Checkemail() {
+				var email = formemailInput.value;
+				var span = document.getElementById("spanemail");
+				span.innerHTML = "";
+				//是邮箱 返回true 不是邮箱 false
+				if(isEmail(email)) {
+					span.className = "success";
+				} else {
+											span.className = "error";
+											span.innerHTML = "邮箱格式错误";
+				}
+			}
+			//显示邮箱提示信息
+			function Tipemail() {
+				var span = document.getElementById("spanemail");
+				span.className = "classspan1";
+				span.innerHTML = "完成验证后，你可以用该邮箱登录和找回密码'";
+			}
+
+			//密码
+			function Checkformpwd() {
+				pwd = formpwdInput.value;
+				var span = document.getElementById("pwspan");
+				span.innerHTML = "";
+				if(trim(pwd) == "") {
+					//						span.className = "error";
+					//						span.innerHTML = "密码不能为空";
+				} else if(trim(pwd).length != pwd.length) {
+					span.className = "error";
+					span.innerHTML = "密码中不能含有空格";
+				} else if(trim(pwd).length < 6 || trim(pwd).length > 20) {
+					span.className = "error";
+					span.innerHTML = "密码长度为6-20个字符";
+				} else {
+					span.className = "success";
+				}
+			}
+
+			//密码 提示信息
+			function Tipformpwd() {
+				var span = document.getElementById("pwspan");
+				span.className = "classspan1";
+				span.innerHTML = "建议使用字母、数字和符号两种及以上的组合，6-20个字符";
+			}
+
+			//再次输入密码
+			function CheckformequalTopwd() {
+				equalpwd = formequalTopwdInput.value;
+				var span = document.getElementById("equalpwspan");
+				span.innerHTML = "";
+				if(trim(equalpwd) == "") {
+					//						span.className = "error";
+					//						span.innerHTML = "密码不能为空";
+				} else if(pwd != equalpwd) {
+					span.className = "error";
+					span.innerHTML = "两次密码输入不一致";
+				} else {
+					span.className = "success";
+				}
+			}
+
+			//再次输入密码 提示信息
+			function TipformequalTopwd() {
+				var span = document.getElementById("equalpwspan");
+				span.className = "classspan1";
+				span.innerHTML = " 请再次输入密码";
+			}
+
+			//用户名
+			function Checkformaccount() {
+				var formaccount = formaccountInput.value;
+				var span = document.getElementById("s1");
+				span.innerHTML = "";
+
+				if(trim(formaccount) == "") {
+					//					span.className = "error";
+					//					span.innerHTML = "用户名不能为空";
+				} else if(trim(formaccount).length<4){
+					span.className = "error";
+					span.innerHTML = "用户名不能小于4个字符";
+				}else {
+					//alert("success");
+					span.className = "success";
+
+				}
+			}
+			//显示提示用户名信息
+			function Tipformaccount() {
+				var span = document.getElementById("s1");
+				span.className = "classspan1";
+				span.innerHTML = "支持中文、字母、数字、“-”“_”的组合，4-20个字符";
+			}
+			// 去掉用户名提示信息
+			function deformaccount() {
+				var span = document.getElementById("s1");
+				span.innerHTML = "";
+			}
+			//手机号
+			function Checkformphone() {
+				var phone = formphoneInput.value;
+				var span = document.getElementById("phonespan");
+				span.innerHTML = "";
+				if(isPhone(phone)) {
+					span.className = "success";
+				} else {
+										span.className = "error";
+										span.innerHTML = "手机号错误";
+				}
+
+			}
+
+			//手机号提示信息
+			function Tipformphone() {
+				var span = document.getElementById("phonespan");
+				span.className = "classspan1";
+				span.innerHTML = " 请再输入11位手机号";
+			}
+
+			//正则表达式
+			//判断 输入不能为空
+			function trim(txt) {
+				var afterTrimTxt = txt.replace(/^\s*/, "").replace(/\s*$/, "");
+				return afterTrimTxt;
+			}
+			//判断 是不是邮箱
+			function isEmail(email) {
+				//email = "453737645@qq.com";
+				var regExp = /^\w{5,10}@\w+\.(com|net|org)$/;
+				var flag = regExp.test(email);
+				return flag;
+			}
+			//判断是不是手机号
+			function isPhone(phoneNumber) {
+				var regularExpression = /^(186\d{8})$|^(13[1-9]\d{8})$|^(15[0-6]\d{8})$/;
+
+				var flag = regularExpression.test(phoneNumber);
+				return flag;
+				//				if (regularExpression.test(phoneNumber)) {
+				//					alert('手机号码格式正确');
+				//				} else {
+				//					alert('不是手机号码');
+				//				}
+			}
+
+			//			function regist () {
+			//				//用户点击注册按钮时 要把所有的信息都验证一遍
+			//				usernameInput.onblur();
+			//				ageInput.onblur();
+			//				emailInput.onblur();
+			//				
+			//				//如果验证错误不能提交
+			//				//通过 span 的class 属性  为 error的个数 来判断 是否可以提交
+			//				var errorSpanArr = document.getElementsByClassName("error");
+			//				var registForm = document.getElementById("registForm");
+			//				
+			//				if(errorSpanArr.length<=0){
+			//					//提交
+			//					registForm.submit();
+			//				}else{
+			//					//不提交
+			//				}
+			//			}
+		</script>
+		<!--<script>
+        seajs.off("load");
+        seajs.off("fetch");
+        seajs.data.charset = 'gb2312';
+    </script>-->
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.divdisplay {
+				display: none;
+			}
+			
+			.divdisplayshow {
+				display: block;
+			}
+			
+			#aid1, #aid2 {
+				cursor: pointer;
+			}
+			
+			
+			/*#email-div-id1, #email-div-id2, #email-div-id3 {
+				display: none;
+			}*/
+			
+			.classspan1 {
+				/*color: red;*/
+				margin-left: 1em;
+				padding-left: 18px;
+			}
+			
+			.classspan2 {
+				color: red;
+				margin-left: 1em;
+				padding-left: 18px;
+			}
+			
+			span.error {
+				color: red;
+				margin-left: 1em;
+				padding-left: 22px;
+				background: url(img/images/error.png) no-repeat 0px center;
+			}
+			
+			span.success {
+				margin-left: 1em;
+				padding-left: 18px;
+				background: url(img/images/success.gif) no-repeat 0px center;
+			}
+			
+			a,
+			address,
+			b,
+			big,
+			blockquote,
+			body,
+			center,
+			cite,
+			code,
+			dd,
+			del,
+			div,
+			dl,
+			dt,
+			em,
+			fieldset,
+			font,
+			form,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			html,
+			i,
+			iframe,
+			img,
+			ins,
+			label,
+			legend,
+			li,
+			ol,
+			p,
+			pre,
+			small,
+			span,
+			strong,
+			u,
+			ul,
+			var {
+				margin: 0;
+				padding: 0;
+			}
+			
+			article,
+			aside,
+			details,
+			figcaption,
+			figure,
+			footer,
+			header,
+			hgroup,
+			main,
+			nav,
+			section,
+			summary {
+				display: block;
+			}
+			
+			hr {
+				-moz-box-sizing: content-box;
+				box-sizing: content-box;
+				height: 0;
+			}
+			
+			button,
+			html input[type=button],
+			input[type=submit] {
+				-webkit-apperance: button;
+				cursor: pointer;
+			}
+			
+			button[disabled],
+			html input[disabled] {
+				cursor: default;
+			}
+			
+			ol,
+			ul {
+				list-style: none;
+			}
+			
+			img {
+				border: 0;
+				vertical-align: middle;
+			}
+			
+			em,
+			i,
+			u {
+				font-style: normal;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.al {
+				text-align: left;
+			}
+			
+			.ac {
+				text-align: center;
+			}
+			
+			.ar {
+				text-align: right;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			.clear,
+			.clr {
+				display: block;
+				overflow: hidden;
+				clear: both;
+				height: 0;
+				line-height: 0;
+				font-size: 0;
+			}
+			
+			.clearfix:after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+			
+			.clearfix {
+				*zoom: 1;
+			}
+			
+			.dorpdown {
+				position: relative;
+			}
+			
+			.dorpdown-layer {
+				display: none;
+				position: absolute;
+			}
+			
+			.dorpdown:hover .dorpdown-layer,
+			.hover .dorpdown-layer {
+				display: block;
+			}
+			
+			.cw-icon {
+				position: relative;
+				cursor: default;
+				zoom: 1;
+			}
+			
+			.cw-icon .i,
+			.cw-icon i {
+				display: block;
+				position: absolute;
+				overflow: hidden;
+			}
+			
+			.w {
+				width: 990px;
+				margin: 0 auto;
+			}
+			
+			.root61 .w {
+				width: 1210px;
+			}
+			
+			body {
+				font: 12px/150% Arial, Verdana, "\5b8b\4f53";
+				color: #666;
+				background: #fff;
+			}
+			
+			a {
+				color: #666;
+				text-decoration: none;
+			}
+			
+			a:hover {
+				color: #C81623;
+			}
+			
+			.m,
+			.mb,
+			.mc,
+			.mt,
+			.p-detail,
+			.p-img,
+			.p-market,
+			.p-name,
+			.p-price,
+			.sm,
+			.smb,
+			.smc,
+			.smt {
+				overflow: hidden;
+			}
+			
+			.img-error {
+				background: url(img/error-jd.gif) no-repeat 50% 50%;
+			}
+			
+			.header .logo,
+			.i-company,
+			.i-def,
+			.i-error,
+			.i-error1,
+			.i-global,
+			.i-suc {
+				background: url(img/images/icon.png) no-repeat;
+			}
+			
+			.i-error {
+				background-position: -17px -100px;
+			}
+			
+			.i-def {
+				background-position: 0 -100px;
+			}
+			
+			.i-suc {
+				background-position: 0 -117px;
+			}
+			
+			.i-company {
+				background-position: 0 -50px;
+			}
+			
+			.i-global {
+				background-position: -50px -50px;
+			}
+			
+			.i-error1 {
+				background-position: -17px -117px;
+			}
+			
+			.header {
+				height: 110px;
+				background: url(//misc.360buyimg.com/user/reg/1.0.0/css/i/headbg.jpg) repeat-x left bottom;
+			}
+			
+			.header .logo {
+				width: 160px;
+				height: 50px;
+				float: left;
+				margin-top: 24px;
+			}
+			
+			.header .logo-title {
+				float: left;
+				height: 34px;
+				line-height: 34px;
+				font-size: 18px;
+				color: #000;
+				border-left: solid 1px #bbb;
+				margin-left: 25px;
+				padding-left: 25px;
+				margin-top: 34px;
+			}
+			
+			.header .have-account {
+				font-size: 16px;
+				float: right;
+				margin-top: 55px;
+				color: #999;
+			}
+			
+			.header .have-account a {
+				color: #333;
+			}
+			
+			.feedback,
+			.i-clear,
+			.i-company,
+			.i-def,
+			.i-error,
+			.i-error1,
+			.i-global,
+			.i-suc,
+			.registerDialog .close,
+			.registerDialog .ico {
+				background: url(img/images/icon.png) no-repeat;
+			}
+			
+			.i-error {
+				background-position: -17px -100px;
+			}
+			
+			.i-def {
+				background-position: 0 -100px;
+			}
+			
+			.i-suc {
+				background-position: 0 -117px;
+			}
+			
+			.i-company {
+				background-position: 0 -50px;
+			}
+			
+			.i-global {
+				background-position: -50px -50px;
+			}
+			
+			.i-error1 {
+				background-position: -17px -117px;
+			}
+			
+			button,
+			input,
+			select,
+			textarea {
+				outline: 0;
+			}
+			
+			textarea {
+				font-size: 13px;
+				resize: none;
+			}
+			
+			input::-ms-clear {
+				display: none;
+			}
+			
+			input::-ms-reveal {
+				width: 0;
+				height: 0;
+			}
+			
+			body,
+			button,
+			input,
+			txt {
+				font-family: "Microsoft YaHei", "Hiragino Sans GB";
+			}
+			
+			.tips {
+				position: absolute;
+				background: #fef4e5;
+				border: solid 1px #f6c090;
+				color: #bc5212;
+				display: none;
+				padding: 0 12px;
+				height: 32px;
+				text-align: center;
+				line-height: 32px;
+				border-radius: 3px;
+				z-index: 11;
+			}
+			
+			.tips .arrow {
+				width: 0;
+				height: 0;
+				line-height: 0;
+				font-size: 0;
+				border-color: #f6c090 transparent transparent;
+				border-style: solid dashed dashed;
+				border-width: 8px;
+				position: absolute;
+				left: 50%;
+				margin-left: -4px;
+				bottom: -16px;
+			}
+			
+			.tips .arrow-inner {
+				width: 0;
+				height: 0;
+				line-height: 0;
+				font-size: 0;
+				border-color: #fef4e5 transparent transparent;
+				border-style: solid dashed dashed;
+				border-width: 8px;
+				position: absolute;
+				left: 50%;
+				margin-left: -4px;
+				bottom: -15px;
+			}
+			
+			.capslock-tip {
+				right: 2px;
+				top: -45px;
+			}
+			
+			.feedback {
+				display: block;
+				width: 33px;
+				height: 135px;
+				background-position: -367px 0;
+			}
+			
+			.feedback:hover {
+				background-position: -334px 0;
+			}
+			
+			.i-clear {
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				right: 20px;
+				top: 20px;
+				background-position: -34px -100px;
+				display: none;
+				cursor: pointer;
+			}
+			
+			.reg-ad {
+				widows: 100%;
+				height: 140px;
+			}
+			
+			.reg-ad a {
+				width: 100%;
+				display: block;
+				height: 140px;
+			}
+			
+			.ui-dialog {
+				box-shadow: 0 3px 10px #ccc;
+			}
+			
+			.registerDialog {
+				background: #fff;
+				text-align: center;
+				padding: 30px 0;
+			}
+			
+			.registerDialog .con {
+				font-size: 16px;
+				color: #333;
+				display: inline-block;
+				vertical-align: middle;
+				text-align: left;
+				line-height: 22px;
+			}
+			
+			.registerDialog .ico {
+				display: inline-block;
+				width: 48px;
+				height: 48px;
+				background-position: -211px 0;
+				vertical-align: middle;
+				margin-right: 20px;
+			}
+			
+			.registerDialog .close {
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				display: block;
+				width: 16px;
+				height: 16px;
+				background-position: -51px -118px;
+			}
+			
+			.ui-mask {
+				cursor: pointer;
+			}
+			
+			.ui-dialog-autoclose {
+				display: none;
+			}
+			
+			.ui-dialog .ui-dialog-title {
+				color: #000;
+				font-weight: 700;
+			}
+			
+			.protocol-con {
+				height: 426px;
+				padding: 10px;
+				line-height: 20px;
+				overflow-x: hidden;
+				overflow-y: auto;
+				margin-bottom: 25px;
+			}
+			
+			.protocol-con h4,
+			.protocol-con h5 {
+				color: #333;
+				font-size: 14px;
+			}
+			
+			.protocol-con h5 {
+				margin: 10px 0;
+			}
+			
+			.protocol-button button {
+				margin: 0 auto;
+				display: block;
+				width: 400px;
+				height: 54px;
+				color: #fff;
+				background: #e22;
+				border: 0;
+				font-size: 16px;
+				font-family: "Microsoft YaHei", "Hiragino Sans GB";
+			}
+			/* user-reg/1.0.0 personal-reg.css Date:2016-04-14 17:06:54 */
+			
+			.form-item-valid .i-status,
+			.i-company,
+			.i-def,
+			.i-error,
+			.i-error1,
+			.i-global,
+			.i-info,
+			.i-pwd-medium,
+			.i-pwd-strong,
+			.i-pwd-weak,
+			.i-suc {
+				background: url(img/images/icon.png) no-repeat;
+			}
+			
+			.i-error {
+				background-position: -17px -100px;
+			}
+			
+			.i-def {
+				background-position: 0 -100px;
+			}
+			
+			.i-suc {
+				background-position: 0 -117px;
+			}
+			
+			.i-company {
+				background-position: 0 -50px;
+			}
+			
+			.i-global {
+				background-position: -50px -50px;
+			}
+			
+			.i-error1 {
+				background-position: -17px -117px;
+			}
+			
+			body {
+				font-size: 14px;
+			}
+			
+			.main {
+				margin: 50px auto 60px;
+				width: 830px;
+			}
+			
+			.reg-form {
+				width: 400px;
+			}
+			
+			.form-item {
+				position: relative;
+				border: solid 1px #ddd;
+				width: 398px;
+				height: 52px;
+				z-index: 0;
+			}
+			
+			.form-item label {
+				float: left;
+				width: 90px;
+				height: 52px;
+				line-height: 52px;
+				padding-left: 20px;
+			}
+			
+			.form-item txt {
+				margin-top: 2px !important;
+			}
+			
+			.form-item .field {
+				border: 0 none;
+				font-size: 14px;
+				width: 190px;
+				height: 19px;
+				padding-bottom: 11px;
+				padding-left: 20px;
+				padding-top: 16px;
+			}
+			
+			.form-item .field span {
+				display: none;
+			}
+			
+			.form-item .form-authcode,
+			.form-item .phonecode {
+				width: 150px;
+			}
+			
+			.form-item .error {
+				display: block;
+			}
+			
+			.form-item .i-status {
+				position: absolute;
+				display: none;
+				width: 16px;
+				height: 16px;
+				top: 20px;
+				right: 20px;
+			}
+			
+			.form-item .img-code {
+				position: absolute;
+				right: 3px;
+				top: 3px;
+				width: 110px;
+				height: 46px;
+				cursor: pointer;
+			}
+			
+			.pwd-weak {
+				border: solid 1px #e22;
+			}
+			
+			.pwd-medium {
+				border: solid 1px #f91;
+			}
+			
+			.pwd-strong {
+				border: solid 1px #90b71b;
+			}
+			
+			.i-info {
+				background-position: -34px -117px;
+			}
+			
+			.i-pwd-weak {
+				background-position: -17px -134px;
+			}
+			
+			.i-pwd-medium {
+				background-position: -34px -117px;
+			}
+			
+			.i-pwd-strong {
+				background-position: -34px -134px;
+			}
+			
+			.btn-phonecode {
+				position: absolute;
+				right: 3px;
+				top: 3px;
+				width: 110px;
+				height: 46px;
+				border: none;
+				background: #f2f2f2;
+				color: #333;
+				padding: 0;
+			}
+			
+			.btn-code-disable {
+				background: #f2f2f2;
+				color: #999;
+				cursor: default;
+			}
+			
+			.form-item-account {
+				z-index: 13;
+			}
+			
+			.form-item-phone .select-country {
+				width: 104px;
+				padding: 0 0 0 20px;
+				height: 52px;
+				*height: 40px;
+				*line-height: 40px;
+				border: none;
+				color: #666;
+				border-right: solid 1px #ddd;
+			}
+			
+			.form-item-phone .arrow {
+				background: url(img/images/icon.png) no-repeat;
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				margin-top: 15px;
+				margin-left: 5px;
+				background-position: -2px -151px;
+				*zoom: 1;
+				*height: 20px;
+			}
+			
+			.form-item-phone .down {
+				background-position: -2px -151px;
+			}
+			
+			.form-item-phone txt {
+				margin-left: 7px !important;
+			}
+			
+			.form-item-phone input {
+				padding-left: 7px !important;
+			}
+			
+			.form-agreen {
+				color: #333;
+				font-size: 12px;
+			}
+			
+			.form-agreen input {
+				width: 18px;
+				height: 18px;
+				border: solid 1px #cfd1d3;
+				vertical-align: text-top;
+				padding: 0;
+				margin: 0;
+				margin-right: 10px;
+			}
+			
+			.form-agreen a {
+				color: #38f;
+			}
+			
+			.form-item-error {
+				border: solid 1px #e22;
+			}
+			
+			.form-item-valid .i-status {
+				display: block;
+				background-position: 0 -117px;
+			}
+			
+			.pending .i-status {
+				background: url(img/images/loading.gif);
+				display: block;
+			}
+			
+			.phone-binded {
+				border: solid 1px #f91;
+			}
+			
+			.input-tip {
+				color: #c5c5c5;
+				height: 27px;
+				font-size: 12px;
+				padding-top: 5px;
+			}
+			
+			.input-tip span i {
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				vertical-align: text-top;
+				margin-right: 8px;
+			}
+			
+			.input-tip .error {
+				color: #e22;
+			}
+			
+			.phone-bind-tip {
+				color: #f91;
+			}
+			
+			.phone-bind-tip .i-info {
+				background-position: -68px -100px;
+			}
+			
+			.btn-register {
+				width: 100%;
+				height: 54px;
+				color: #fff;
+				background: #e22;
+				border: 0;
+				font-size: 16px;
+				font-family: "Microsoft YaHei", "Hiragino Sans GB";
+			}
+			
+			.suggest-container {
+				display: none;
+			}
+			
+			.suggest-container li {
+				cursor: pointer;
+			}
+			
+			.suggest-container .disable {
+				cursor: default;
+			}
+			
+			.user-suggest {
+				position: absolute;
+				left: -1px;
+				display: block;
+				width: 398px;
+				border: solid 1px #f98;
+				z-index: 10;
+				top: 52px;
+				border-bottom: 5px solid RGBA(221, 221, 221, .15);
+			}
+			
+			.user-suggest li {
+				height: 40px;
+				line-height: 40px;
+				color: #666;
+				padding-left: 130px;
+				background: #fdf2ef;
+			}
+			
+			.user-suggest .suggest-li-last {
+				border-bottom: 1px solid #f98;
+			}
+			
+			.user-suggest .disable {
+				color: #ee2223;
+			}
+			
+			.user-suggest .disable i {
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				margin-right: 8px;
+				vertical-align: middle;
+			}
+			
+			.user-suggest .disable .value {
+				overflow: hidden;
+			}
+			
+			.user-suggest .disable .value span {
+				display: inline-block;
+				vertical-align: middle;
+				width: 150px;
+			}
+			
+			.user-suggest .current {
+				background: #ffeae5;
+			}
+			
+			.phone-suggest {
+				width: 145px;
+				border-left: solid 1px #ccc;
+				background: #fff;
+				border-bottom: none;
+				z-index: 11;
+			}
+			
+			.phone-suggest li {
+				height: 40px;
+				line-height: 40px;
+				padding-left: 20px;
+			}
+			
+			.phone-suggest .current,
+			.phone-suggest .selected {
+				background: #f6f6f6;
+			}
+			
+			.email-suggest {
+				position: absolute;
+				border: solid 1px #ccc;
+				z-index: 10;
+				background: #fff;
+				left: -1px;
+				top: 52px;
+				width: 100%;
+			}
+			
+			.email-suggest li {
+				height: 40px;
+				line-height: 40px;
+				padding-left: 130px;
+				color: #333;
+				width: 255px;
+				text-align: right;
+				text-indent: -1000px;
+			}
+			
+			.email-suggest li .value {
+				overflow: hidden;
+			}
+			
+			.email-suggest .current {
+				background: #f6f6f6;
+			}
+			
+			.ui-scrollbar-main {
+				background-color: #fff;
+			}
+			
+			.ui-scrollbar-item {
+				border: #ccc 1px solid;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				background: #ddd;
+			}
+			
+			.reg-other {
+				float: left;
+				margin-left: 104px;
+				height: 605px;
+				padding-left: 90px;
+				border-left: solid 1px #e6e6e6;
+			}
+			
+			.reg-other .phone-fast-reg {
+				background: url(img/images/phone.jpg) no-repeat;
+				width: 213px;
+				height: 270px;
+			}
+			
+			.reg-other .company-reg {
+				width: 160px;
+				height: 60px;
+				margin-top: 50px;
+				border-bottom: solid 1px #ddd;
+				margin-left: 30px;
+			}
+			
+			.reg-other .company-reg a {
+				display: block;
+				width: 160px;
+				height: 30px;
+			}
+			
+			.reg-other .company-reg a i {
+				display: inline-block;
+				width: 30px;
+				height: 29px;
+				vertical-align: middle;
+				margin-right: 15px;
+			}
+			
+			.reg-other .company-reg a span {
+				vertical-align: middle;
+			}
+			
+			.reg-other .inter-cust {
+				width: 160px;
+				margin-left: 30px;
+				margin-top: 30px;
+			}
+			
+			.reg-other .inter-cust a {
+				display: block;
+				width: 170px;
+				height: 30px;
+			}
+			
+			.reg-other .inter-cust a i {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				vertical-align: text-bottom;
+				margin-right: 15px;
+				float: left;
+				margin-top: 7px;
+			}
+			
+			.reg-other .inter-cust a span {
+				display: inline-block;
+			}
+			
+			.reg-other a:hover {
+				color: #000;
+				font-weight: 700;
+			}
+			
+			.form-item-phonecode .i-status {
+				right: 125px;
+				display: none;
+			}
+			
+			.form-item-authcode .i-status {
+				right: 125px;
+			}
+			
+			.item-phone-wrap {
+				height: 86px;
+				position: relative;
+				z-index: 2;
+			}
+			
+			.item-phone-wrap .orEmail {
+				position: absolute;
+				right: 0;
+				bottom: 10px;
+			}
+			
+			.item-phone-wrap .orEmail a {
+				color: #38f;
+			}
+			
+			.item-email-wrap {
+				display: none;
+				height: 86px;
+				position: relative;
+				z-index: 11;
+			}
+			
+			.item-email-wrap .orPhone {
+				position: absolute;
+				right: 0;
+				bottom: 10px;
+			}
+			
+			.item-email-wrap .orPhone a {
+				color: #38f;
+			}
+			
+			.item-email-wrap .form-item {
+				z-index: 11;
+			}
+			
+			.ignore-item {
+				display: none;
+			}
+			
+			#form-equalTopwd,
+			#form-pwd,
+			#login-pwd {
+				width: 210px;
+			}
+			
+			#scrollbar1 {
+				position: relative;
+				z-index: 100;
+				width: 170px;
+				margin: 8px -1px;
+				visibility: hidden;
+			}
+			
+			#scrollbar1 .disable {
+				display: none;
+			}
+			
+			#scrollbar1 .viewport {
+				position: absolute;
+				z-index: 10;
+				border-bottom: solid 1px #ccc;
+				border-right: solid 1px #ccc;
+				width: 140px;
+				height: 320px;
+				overflow: hidden;
+			}
+			
+			#scrollbar1 .overview {
+				list-style: none;
+				z-index: 10;
+				position: absolute;
+				left: 0;
+				top: 0;
+				padding: 0;
+				margin: 0;
+			}
+			
+			#scrollbar1 .scrollbar {
+				right: 28px;
+				z-index: 11;
+				background: transparent url(//misc.360buyimg.com/user/reg/1.0.0/widget/personal-reg/i/bg-scrollbar-track-y.png) no-repeat 0 0;
+				position: absolute;
+				background-position: 0 0;
+				float: right;
+				width: 15px;
+			}
+			
+			#scrollbar1 .track {
+				background: transparent url(//misc.360buyimg.com/user/reg/1.0.0/widget/personal-reg/i/bg-scrollbar-trackend-y.png) no-repeat 0 100%;
+				height: 100%;
+				width: 13px;
+				position: absolute;
+				padding: 0 1px;
+			}
+			
+			#scrollbar1 .thumb {
+				background: transparent url(//misc.360buyimg.com/user/reg/1.0.0/widget/personal-reg/i/bg-scrollbar-thumb-y.png) no-repeat 50% 100%;
+				height: 20px;
+				width: 25px;
+				cursor: pointer;
+				overflow: hidden;
+				position: absolute;
+				top: 0;
+				left: -9px;
+			}
+			
+			#scrollbar1 .thumb .end {
+				background: transparent url(//misc.360buyimg.com/user/reg/1.0.0/widget/personal-reg/i/bg-scrollbar-thumb-y.png) no-repeat 50% 0;
+				overflow: hidden;
+				height: 5px;
+				width: 25px;
+			}
+			
+			.noSelect {
+				user-select: none;
+				-o-user-select: none;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+			}
+			/* user-reg/1.0.0 footer.css Date:2016-04-14 17:06:54 */
+			
+			.footer {
+				font-size: 12px;
+				text-align: center;
+				border-top: solid 1px #e6e6e6;
+				color: #999;
+				padding-bottom: 30px;
+			}
+			
+			.footer .links {
+				padding-top: 30px;
+				padding-bottom: 15px;
+			}
+			
+			.footer p {
+				color: #bbb;
+			}
+			
+			.footer a {
+				color: #999;
+				margin: 0 10px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="logo-con w clearfix">
+				<a href="//www.jd.com" class="logo">
+				</a>
+				<div class="logo-title">欢 迎 注 册</div>
+				<div class="have-account">已有账号
+					<a href="#">请登录</a>
+				</div>
+			</div>
+
+		</div>
+		<div class="container w">
+
+			<div class="main clearfix">
+				<div class="reg-form fl">
+					<form action="" id="register-form" method="post">
+						<input type="hidden" name="new" value="new_person_reg" />
+						<input type="hidden" id="localmisc" name="localmisc" value="" />
+						<input type="hidden" name="regType" id="regType" value="person" />
+						<input type="hidden" name="uuid" id="uuid" value="4b8866da-355a-41da-a006-9f1fa71b7fb0" />
+						<input type="hidden" name="verifymc" id="verifymc" value="" />
+						<input type="hidden" name="emailMg" id="emailMg" />
+						<input type="hidden" name="authcodeMg" id="authcodeMg" />
+						<input type="hidden" name="state" id="state" value="" />
+						<input type="hidden" name="tgId" id="tgId" value="" />
+						<input type="hidden" name="eid" id="eid" value="" />
+						<input type="hidden" name="fp" id="sessionId" value="" />
+						<input type="hidden" name="lkRkCoSPea" value="JvrBv" />
+						<input type="hidden" value="-1" id="hnschool" class="hide" />
+						<input type="hidden" id="schoolid" name="schoolid" class="hide" />
+						<!--chrome autocomplete off bug hack-->
+						<input style="display:none" name="hack" />
+						<input type="password" style="display:none" name="hack1" />
+
+						<div class="form-item form-item-account" id="form-item-account">
+							<label>用　户　名</label>
+							<input type="text" id="form-account" name="regName" class="field" autocomplete="off" maxlength="20" placeholder="您的账户名和登录名" default='<i class="i-def"></i>支持中文、字母、数字、“-”“_”的组合，4-20个字符' />
+							<i class="i-status"></i>
+						</div>
+						<div class="input-tip">
+							<span id="s1"></span>
+						</div>
+						<!--
+                	作者：307704284@qq.com
+                	时间：2016-07-06
+                	描述：
+                -->
+						<div class="form-item">
+							<label>设 置 密 码</label>
+							<input style="display:none" type="password" name="pwd" class="fakeinput" />
+							<input type="password" name="pwd" id="form-pwd" class="field" maxlength="20" placeholder="建议至少使用两种字符组合" default="<i class=i-def></i>建议使用字母、数字和符号两种及以上的组合，6-20个字符" />
+							<i class="i-status"></i>
+						</div>
+						<div class="input-tip">
+							<span id="pwspan"></span>
+						</div>
+						<div class="form-item">
+							<label>确 认 密 码</label>
+							<input style="display:none" type="password" name="pwdRepeat" class="fakeinput" />
+							<input type="password" name="pwdRepeat" id="form-equalTopwd" class="field" placeholder="请再次输入密码" maxlength="20" default='<i class="i-def"></i>请再次输入密码' />
+							<i class="i-status"></i>
+						</div>
+						<div class="input-tip">
+							<span id="equalpwspan"></span>
+						</div>
+						<div class="item-email-wrap">
+							
+							<!--需要隐藏-->
+							<div class="form-item" id="email-div-id1">
+								<label>邮 箱 验 证</label>
+								<input type="text" name="email" id="form-email" class="field ignore" autocomplete="off" placeholder="建议使用常用邮箱" id="email-input" default='<i class="i-def"></i>完成验证后，你可以用该邮箱登录和找回密码' />
+								<i class="i-status"></i>
+							</div>
+							<div class="input-tip" id="email-div-id2">
+								<span id="spanemail"></span>
+							</div>
+							
+							
+							<div class="orPhone" id="email-div-id3">
+								或
+								<a id="aid1" class="">手机验证</a>
+							</div>
+							<!--到这-->
+						</div>
+						<div class="item-phone-wrap">
+							<div class="form-item form-item-phone">
+								<label class="select-country" id="select-country" country_id="0086">中国 + 86<a href="javascript:void(0) "class="arrow"></a></label>
+								<input type="text" id="form-phone" name="phone" class="field" placeholder="建议使用常用手机" autocomplete="off" maxlength="11" default='<i class="i-def"></i>完成验证后，可以使用该手机登录和找回密码' />
+								<i class="i-status"></i>
+							</div>
+							<div class="input-tip">
+								<span id="phonespan"></span>
+							</div>
+							<!--点这个 显示 邮箱和相邻的那个div   这一个隐藏 -->
+							<div class="orEmail" id="phone-div-id">或
+								<a id="aid2" class="">邮箱验证</a>
+							</div>
+						</div>
+						<div class="form-item form-item-authcode">
+							<label>验　证　码</label>
+							<input type="text" autocomplete="off" name="authcode" id="authCode" maxlength="6" class="field form-authcode" placeholder="请输入验证码" default='<i class="i-def"></i>看不清？点击图片更换验证码' />
+							<img class="img-code" title="换一换" id="imgAuthCode" onclick="this.src= document.location.protocol +'//authcode.jd.com/verify/image?a=0&amp;acid=4b8866da-355a-41da-a006-9f1fa71b7fb0&amp;uid=4b8866da-355a-41da-a006-9f1fa71b7fb0&amp;srcid=reg&amp;is=369902516b2e0ab8e660fb520e67c1f6&amp;yys='+new Date().getTime()" ver_colorofnoisepoint="#888888" />
+						</div>
+						<div class="input-tip">
+							<span></span>
+						</div>
+						<div class="form-item form-item-phonecode">
+							<label>手机验证码</label>
+							<input type="text" name="mobileCode" maxlength="6" id="phoneCode" class="field phonecode" placeholder="请输入手机验证码" autocomplete="off" />
+							<button id="getPhoneCode" class="btn-phonecode" type="button">获取验证码</button>
+							<i class="i-status"></i>
+						</div>
+						<div class="input-tip">
+							<span></span>
+						</div>
+						<div class="form-agreen">
+							<div><input type="checkbox" name="agreen" checked="" />我已阅读并同意
+								<a href="#" id="protocol">《京东用户注册协议》</a>
+								<!--
+                                	作者：307704284@qq.com
+                                	时间：2016-07-19
+                                	描述：********************************************************************京东用户协议
+                                -->
+							</div>
+							<div class="input-tip">
+								<span></span>
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn-register">立即注册</button>
+						</div>
+					</form>
+				</div>
+				<div class="reg-other">
+					<div class="phone-fast-reg">
+					</div>
+					<div class="company-reg">
+						<a href="https://reg.jd.com/reg/company" target="_blank">
+							<i class="i-company"></i>
+							<span>企业用户注册</span>
+						</a>
+					</div>
+					<div class="inter-cust">
+						<a href="//reg-en.jd.com/reg/person.html" target="_blank">
+							<i class="i-global"></i>
+							<span>INTERNATIONAL<br/>CUSTOMERS</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="protocoldiv" style="display:none">
+
+				<div class="protocol-button">
+					<button>同意并继续</button>
+				</div>
+			</div>
+			<div id="payProtocoldiv" style="display:none">
+
+				<div class="protocol-button">
+					<button>同意并继续</button>
+				</div>
+			</div>
+
+		</div>
+		<div class="footer w">
+			<div class="links">
+				<a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
+				<a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
+				<a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>|
+				<a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">商家入驻</a>|
+				<a rel="nofollow" target="_blank" href="//www.jd.com/intro/service.aspx">广告服务</a>|
+				<a rel="nofollow" target="_blank" href="//app.jd.com/">手机京东</a>|
+				<a target="_blank" href="//club.jd.com/links.aspx">友情链接</a>|
+				<a target="_blank" href="//media.jd.com">销售联盟</a>|
+				<a href="//club.jd.com/" target="_blank">京东社区</a>|
+				<a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+				<a target="_blank" href="#" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+			</div>
+			<div class="copyright">
+				Copyright&copy;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+			</div>
+		</div>
+		<!--
+                	作者：307704284@qq.com
+                	时间：2016-07-06
+                	描述： 问卷调查页面               连接到其他页面
+                	//surveys.jd.com/index.php?r=survey/index/sid/447941/lang/zh-Hans
+                -->
+		<a target="_blank" href="#" class="feedback" style="margin-top: -85px; position: fixed; right: 0px; bottom: 50%;"></a>
+		<br />
+	</body>
+
+</html>

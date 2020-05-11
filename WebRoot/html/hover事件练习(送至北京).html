@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>hover事件练习(送至北京)</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+
+		<style type="text/css">
+			body {
+				font: 12px/150% Arial, Verdana, "宋体";
+				color: #666;
+				background: #fff;
+			}
+			
+			
+			/*送至北京开始*/
+			
+			#panel {
+				width: 94px;
+				height: 30px;
+				line-height: 30px;
+				position: relative;
+				text-align: center;
+			}
+			
+			div.headFather {
+				width: 94px;
+				height: 30px;
+				position: absolute;
+				z-index: 2;
+			}
+			
+			div.head {
+				width: 72px;
+				height: 30px;
+				padding: 0px 10px;
+				border-left: 1px solid #F1F1F1;
+				border-right: 1px solid #F1F1F1;
+				cursor: pointer;
+				background-color: #F1F1F1;
+			}
+			/*实际总宽度314 高度248*/
+			
+			.content {
+				width: 312px;
+				height: 226px;
+				padding: 10px 0px;
+				border: 1px solid #DDDDDD;
+				display: none;
+				background-color: #fff;
+				position: absolute;
+				top: 30px;
+				z-index: 1;
+			}
+			
+			
+			ul {
+				padding-left: 10px;
+				padding-top: 2px;
+				float: left;
+			}
+			/*每个li是58*/
+			
+			ul.toProvince>li {
+				width: 60px;
+				height: 28px;
+				display: block;
+				float: left;
+			}
+			
+			ul.toProvince>li>a {
+				height: 16px;
+				padding: 4px 8px;
+				line-height: 16px;
+				text-decoration: none;
+				color: #666;
+			}
+			
+			/*送至北京结束*/
+		</style>
+
+		<script src="../js/jquery-1.7.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/colorChange.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*送至山东开始*/
+			$(function() {
+				
+
+				//需求: 鼠标悬浮在 标题上时   显示标题下面的div
+
+				
+				$("#panel").hover(function() {
+					
+					//让层显示
+					$(this).find("div.content").show();
+
+					//div外面的div加上左右边框
+
+					var $headFatherDiv = $(this).find("div.headFather");
+					$headFatherDiv.css("border-left", "1px solid #DDDDDD");
+					$headFatherDiv.css("border-right", "1px solid #DDDDDD");
+
+					//head div颜色变白 设置下补白为1px 这样正好下面多出来一点 遮住content这个div
+					$headFatherDiv.find("div.head").css("backgroundColor", "#fff");
+					$headFatherDiv.find("div.head").css("padding-bottom", "1px");
+
+				}, function() {
+
+					$(this).find("div.content").hide();
+
+					//div外面的div加上左右边框
+					var $headFatherDiv = $(this).find("div.headFather");
+					$headFatherDiv.css("border-left", "1px solid #F1F1F1");
+					$headFatherDiv.css("border-right", "1px solid #F1F1F1");
+
+					$headFatherDiv.find("div.head").css("backgroundColor", "#F1F1F1");
+					$headFatherDiv.find("div.head").css("padding-bottom", "0px");
+
+				});
+
+				//动态产生ul
+				var proviceArr = ['北京', '上海', '天津', '重庆', '河北', '山西', '河南', '辽宁', '吉林', '黑龙江', '内蒙古', '江苏', '山东', '安徽', '浙江', '福建', '湖北', '湖南', '广东', '广西', '江西', '四川', '海南', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆', '台湾', '香港',
+					'澳门', '钓鱼岛', '海外'
+				];
+
+				var $provinceUL = $(".toProvince");
+
+				for (var i = 0; i < proviceArr.length; i++) {
+
+					$provinceUL.append("<li><a href='#'>" + proviceArr[i] + "</a></li>");
+
+				}
+
+				//鼠标悬浮在a上,背景变灰 #F4F4FC   文字变红 #C81623
+				$(".toProvince a").hover(function() {
+
+					$(this).css({
+						"backgroundColor": "#F4F4F4",
+						"color": " #C81623"
+					});
+				}, function() {
+
+					var backgroundColor = $.fn.getHexBackgroundColor($(this), "backgroundColor");
+
+					//要判断 如果移出去的时候 背景是红色的 就别变了
+					if (backgroundColor != "#c81623") {
+						$(this).css({
+							"backgroundColor": "#fff",
+							"color": " #666"
+						});
+					}
+
+				});
+
+				//给a绑定事件
+
+				$(".toProvince a").click(function() {
+
+					//1.被点击的a背景变红、字变白
+					$(this).css({
+						"backgroundColor": "#C81623",
+						"color": "#fff"
+					});
+					//2.其他的兄弟节点a 背景变白
+					$(this).parent().siblings().find("a").css({
+						"backgroundColor": "#fff",
+						"color": "#666"
+					});
+					//3.送至 后面的文字改变
+
+					var $sendToSpan = $("#sendTo");
+					$sendToSpan.text($(this).text());
+				});
+				/*送至山东结束*/
+			});
+		</script>
+	</head>
+	</head>
+
+	<body>
+		<!--登录/注册-->
+		
+
+				<!--送至:山东-->
+				<div id="panel">
+					<div class="headFather">
+						<div class="head">送至:<span id="sendTo">北京</span></div>
+					</div>
+					<div class="content">
+						<ul class="toProvince"></ul>
+					</div>
+				</div>
+		
+	</body>
+
+</html>

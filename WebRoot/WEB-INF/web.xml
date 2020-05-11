@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>JD</display-name>
+
+	<welcome-file-list>
+
+		<welcome-file>index.jsp</welcome-file>
+
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>CategoryServlet</servlet-name>
+		<servlet-class>com.servlet.CategoryServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>JDDispatcherServlet</servlet-name>
+		<servlet-class>com.servlet.JDDispatcherServlet</servlet-class>
+	</servlet>
+	<servlet>
+
+		<servlet-name>Category2Servlet</servlet-name>
+		<servlet-class>com.servlet.Category2Servlet</servlet-class>
+	</servlet>
+
+	<servlet>
+
+		<servlet-name>UserProductServlet</servlet-name>
+		<servlet-class>com.servlet.UserProductServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ProductServlet</servlet-name>
+		<servlet-class>com.servlet.ProductServlet</servlet-class>
+		<init-param>
+			<param-name>productImageUploadPath</param-name>
+			<param-value>D:/jidi16WorkSpace2/JD1.8新/WebRoot/img/productImage</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ShoppingCartServlet</servlet-name>
+		<servlet-class>com.servlet.ShoppingCartServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.servlet.UserServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>OrderServlet</servlet-name>
+		<servlet-class>com.servlet.OrderServlet</servlet-class>
+	</servlet>
+	
+	 <servlet>
+    <servlet-name>MailServlet</servlet-name>
+    <servlet-class>com.servlet.MailServlet</servlet-class>
+  </servlet>
+
+	<servlet-mapping>
+		<servlet-name>CategoryServlet</servlet-name>
+		<url-pattern>/CategoryServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>JDDispatcherServlet</servlet-name>
+		<url-pattern>/JDDispatcherServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Category2Servlet</servlet-name>
+		<url-pattern>/Category2Servlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProductServlet</servlet-name>
+		<url-pattern>/ProductServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UserProductServlet</servlet-name>
+		<url-pattern>/UserProductServlet</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShoppingCartServlet</servlet-name>
+		<url-pattern>/ShoppingCartServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/UserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>OrderServlet</servlet-name>
+		<url-pattern>/OrderServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+    <servlet-name>MailServlet</servlet-name>
+    <url-pattern>/MailServlet</url-pattern>
+  </servlet-mapping>
+  
+	<filter>
+		<filter-name>MyCharacterFilter</filter-name>
+		<filter-class>com.filter.MyCharacterFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>MyCharacterFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+</web-app>

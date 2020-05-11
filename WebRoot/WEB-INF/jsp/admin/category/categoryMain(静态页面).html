@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>第一个Bootstrap程序</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<link rel="stylesheet" type="text/css" href="../../../../css/bootstrap/css/bootstrap.css"/>
+		<style type="text/css">
+			body {
+				background-color:#F9F9F9;
+			}
+			
+			a:link {
+				text-decoration: none;
+			}
+			
+			
+		
+			tr.tableHead {
+				background-color: #337AB7;
+				color: #ffffff;
+			}
+			
+			tr.tableHead>th {
+				text-align: center;
+			}
+			
+			/*鼠标悬停的 当前行高亮*/
+			/*table>tbody>tr:hover {
+				background-color:#BAD0EF !important;
+			}*/
+			
+			div.categoryTableDiv {
+				width:1060px;
+				margin:0px auto;
+			}
+			
+			#categoryTable {
+				position:relative;
+				top:100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<ul class="breadcrumb">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">商品种类管理</a></li>
+				<li><a href="#">管理一级商品种类</a></li>
+			</ul>
+		</div>
+		<div class="text-center categoryTableDiv">
+
+			<table id="categoryTable" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr class="tableHead">
+						<th width="15%">商品种类编号</th>
+						<th width="15%">商品种类名称</th>
+						<th width="50%">商品种类描述</th>
+						<th width="10%">操作</th>
+						<th width="10%">操作</th>
+					</tr>
+				</thead>
+
+				<tbody>
+				
+				
+
+					<tr>
+						<td>1</td>
+						<td>手机</td>
+						<td>通讯工具</td>
+						
+						<td>
+							<a href="#" class="btn btn-success btn-xs">修改</a>
+						</td>
+						<td>
+							<a href="#" class="btn btn-danger btn-xs">删除</a>
+						</td>
+					</tr>
+
+					<tr>
+						<td>2</td>
+						<td>笔记本</td>
+						<td>便携电脑</td>
+						
+						<td>
+							<a href="#" class="btn btn-success btn-xs">修改</a>
+						</td>
+						<td>
+							<a href="#" class="btn btn-danger btn-xs">删除</a>
+						</td>
+					</tr>
+
+					<tr>
+						<td>3</td>
+						<td>图书音像</td>
+						<td>333</td>
+						
+						<td>
+							<a href="#" class="btn btn-success btn-xs">修改</a>
+						</td>
+						<td>
+							<a href="#" class="btn btn-danger btn-xs">删除</a>
+						</td>
+					</tr>
+				
+					
+					<tr>
+						<td>4</td>
+						<td>服装鞋帽</td>
+						<td>444</td>
+						
+						<td>
+							<a href="#" class="btn btn-success btn-xs">修改</a>
+						</td>
+						<td>
+							<a href="#" class="btn btn-danger btn-xs">删除</a>
+						</td>
+					</tr>
+					
+
+				</tbody>
+
+			</table>
+
+		</div>
+
+		<script src="../../../../css/bootstrap/js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../../css/bootstrap/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				//对id为categoryTable表格进行隔行换色
+				$("#categoryTable>tbody>tr:even").css("background-color","#fff");
+			});
+		</script>
+	</body>
+
+</html>
